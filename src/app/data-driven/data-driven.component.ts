@@ -24,7 +24,7 @@ export class DataDrivenComponent {
         
       this.myForm = formBuilder.group({
               'userData': formBuilder.group({
-             'username': ['Max', Validators.required],
+             'username': ['Max', [Validators.required, this.exampleValidator]],
               'email': ['', [Validators.required, Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")]]
           }),
           'password': ['', Validators.required],
@@ -41,6 +41,13 @@ export class DataDrivenComponent {
     
     onSubmit() {
         console.log(this.myForm);
+    }
+    
+    exampleValidator(control: FormControl): {[s: string]: boolean} {
+        if(control.value === 'Example') {   // To check if input field has a value 'Example'
+           return {example: true};    // it means validation will fail, because if we are returning something, it means validation fails    
+        }
+        return null;  // it means validation is successful
     }
     
 }
