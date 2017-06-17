@@ -11,7 +11,7 @@ import { DataDrivenComponent } from './data-driven/data-driven.component'
   declarations: [
     AppComponent,
     TemplateDrivenComponent,
-    TemplateDrivenComponent  
+    DataDrivenComponent  
   ],
   imports: [
     BrowserModule,
